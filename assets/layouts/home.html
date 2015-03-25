@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <h2>Hello! <%=name%></h2>
+  </div>
+  <div class="panel-body">
+      <div class="form-group" id="descriptionContent">
+      <label for="description" class="col-lg-2 control-label">description</label>
+          <div class="col-lg-10">
+              <textarea class="form-control" rows="3" id="description"><%=description%></textarea>
+              <span id="message" class="help-block">Write something for your self introduction.</span>
+          </div>
+      </div>
+      <button type="button" id="updateBtn" class="btn btn-primary">Update</button>
+
+  </div>
+  <div class="panel-footer"> <button type="button" id="deleteBtn" class="btn btn-danger">Delete <%=account%></button> </div>
+</div>
