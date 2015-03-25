@@ -27,7 +27,7 @@ var V_login = ExtView.extend({
         var self=this;
         this.model.save({},{success: function(rs){
             User= new M_User({_id: self.model.get("_id")});
-            workspace.navigate('home', {trigger: true});
+            workspace.navigate('home/'+self.model.get("_id"), {trigger: true});
         }});
     },
     setValue: function(e){
@@ -53,7 +53,7 @@ var V_register = V_login.extend({
         // console.log(e.target, this.model.attributes);
         this.model.save({},{success: function(rs){
             User= new M_User({_id: self.model.get("_id")});
-            workspace.navigate('home', {trigger: true});
+            workspace.navigate('home/'+self.model.get("_id"), {trigger: true});
         }});
     }
 });

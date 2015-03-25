@@ -3,7 +3,11 @@ var User;
 
 var Router=Backbone.Router.extend({
     routes: {
+        "home/:id": "homeView",
         "*frag": "defaultRoute"
+    },
+    homeView: function(id){
+        this.view = new V_home({model: new M_User({"_id": id})});
     },
     loginview: function(){
         delete User;
