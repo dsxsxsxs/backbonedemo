@@ -12,7 +12,7 @@ var ExtView= Backbone.View.extend({
         var self=this;
         $.get("./layouts/"+this.name+".html", function(rs){
             var template = _.template( rs );
-            self.$el.html( template(self.model.attributes) );
+            self.$el.html( template(self.model.attributes || {models: self.model.toJSON()}) );
         });
     }
 });
@@ -83,4 +83,18 @@ var V_home = V_login.extend({
             workspace.navigate('', {trigger: true});
         }});
     }
+});
+
+var V_list = ExtView.extend({
+    name: "list",
+    initialize: function(){
+        this.model=new C_Users;
+        var self=this;
+        this.model.fetch({success: function(){
+            self.render();
+        }});
+    },
+    events:{
+
+    },
 });

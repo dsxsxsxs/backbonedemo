@@ -1,0 +1,13 @@
+<% for (var user in models){ %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <h4><%=models[user].name %></h4>
+  </div>
+  <div class="panel-body">
+        <div class="col-lg-10">
+              <%=models[user].description %>
+        </div>
+  </div>
+  </div>
+</div>
+<% } %>
