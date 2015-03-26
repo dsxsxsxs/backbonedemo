@@ -15,3 +15,8 @@ var M_UserLogin = Backbone.Model.extend({
         password: '',
     }
 });
+
+var C_Users = Backbone.Collection.extend({
+    url: '/user',
+    model: M_User
+});
