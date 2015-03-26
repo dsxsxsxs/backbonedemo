@@ -19,6 +19,12 @@ app.use(bodyparser());
 app.get('/', function(req, resp){
     resp.sendfile(__dirname+'/assets/index.html');
 });
+app.get('/user', function(req, resp){
+    User.find({},function(err, rs){
+        if (err) console.error(err);
+        resp.send(rs);
+    });
+});
 app.get('/user/:_id', function(req, resp){
     User.find({_id: req.params._id},function(err, rs){
         if (err) console.error(err);
@@ -28,7 +34,6 @@ app.get('/user/:_id', function(req, resp){
 app.post('/user/login', function(req, resp){
     User.find(req.body,function(err, rs){
         if (err) console.error(err);
-        console.log(rs);
         resp.send(rs[0]);
     });
 });
