@@ -7,10 +7,10 @@ var Router=Backbone.Router.extend({
         "*frag": "defaultRoute"
     },
     homeView: function(id){
+        if (this.view) this.view.remove();
         this.view = new V_home({model: new M_User({"_id": id})});
     },
     loginview: function(){
-        delete User;
         this.view = new V_login({model: new M_UserLogin});
     },
     defaultRoute: function(frag){

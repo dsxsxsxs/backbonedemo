@@ -5,7 +5,8 @@ var ExtView= Backbone.View.extend({
     },
     remove: function(){
         this.$el.empty();
-        // this.stopListening();
+        this.off().undelegateEvents().stopListening();
+        return this;
     },
     render: function(){
         var self=this;
@@ -26,12 +27,10 @@ var V_login = ExtView.extend({
     triggerlogin: function(e){
         var self=this;
         this.model.save({},{success: function(rs){
-            User= new M_User({_id: self.model.get("_id")});
             workspace.navigate('home/'+self.model.get("_id"), {trigger: true});
         }});
     },
     setValue: function(e){
-        console.log(e.target.value);
         this.model.set(e.target.id, e.target.value);
     },
 });
@@ -50,9 +49,7 @@ var V_register = V_login.extend({
     },
     triggerRegister: function(e){
         var self=this;
-        // console.log(e.target, this.model.attributes);
         this.model.save({},{success: function(rs){
-            User= new M_User({_id: self.model.get("_id")});
             workspace.navigate('home/'+self.model.get("_id"), {trigger: true});
         }});
     }
@@ -82,10 +79,8 @@ var V_home = V_login.extend({
         }});
     },
     triggerDelete: function(e){
-        this.model.destroy({
-           success: function (rs) {
-               workspace.navigate('', {trigger: true});
-           }
-       });
+        this.model.destroy({ success: function (rs) {
+            workspace.navigate('', {trigger: true});
+        }});
     }
 });
